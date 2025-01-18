@@ -33,8 +33,8 @@ async def create_test_database():
             host=DB_HOST,
         )
         # Drop test database if it exists and create it fresh
-        await conn.execute(f'DROP DATABASE IF EXISTS {TEST_DB_NAME}')
-        await conn.execute(f'CREATE DATABASE {TEST_DB_NAME}')
+        await conn.execute(f"DROP DATABASE IF EXISTS {TEST_DB_NAME}")
+        await conn.execute(f"CREATE DATABASE {TEST_DB_NAME}")
         await conn.close()
         # Verify we can connect to the test database
         test_conn = await asyncpg.connect(
@@ -55,9 +55,7 @@ engine_test = create_async_engine(
     poolclass=NullPool,
 )
 async_session_maker = sessionmaker(
-    engine_test,
-    class_=AsyncSession,
-    expire_on_commit=False
+    engine_test, class_=AsyncSession, expire_on_commit=False
 )
 
 
