@@ -32,21 +32,18 @@ async def create_test_database():
             password="postgres",
             host=DB_HOST,
         )
-        
         # Drop test database if it exists and create it fresh
         await conn.execute(f'DROP DATABASE IF EXISTS {TEST_DB_NAME}')
         await conn.execute(f'CREATE DATABASE {TEST_DB_NAME}')
         await conn.close()
-        
         # Verify we can connect to the test database
         test_conn = await asyncpg.connect(
             database=TEST_DB_NAME,
-            user="postgres", 
+            user="postgres",
             password="postgres",
             host=DB_HOST,
         )
         await test_conn.close()
-        
     except Exception as e:
         print(f"Error setting up test database: {e}")
         raise
@@ -57,7 +54,11 @@ engine_test = create_async_engine(
     TEST_DATABASE_URL.replace("postgresql://", "postgresql+asyncpg://"),
     poolclass=NullPool,
 )
-async_session_maker = sessionmaker(engine_test, class_=AsyncSession, expire_on_commit=False)
+async_session_maker = sessionmaker(
+    engine_test,
+    class_=AsyncSession,
+    expire_on_commit=False
+)
 
 
 async def override_get_session() -> AsyncGenerator[AsyncSession, None]:
@@ -80,12 +81,9 @@ def event_loop():
 async def test_app():
     # Create test database and tables
     await create_test_database()
-    
     async with engine_test.begin() as conn:
         await conn.run_sync(Base.metadata.create_all)
-    
     yield app
-    
     # Clean up - drop all tables
     async with engine_test.begin() as conn:
         await conn.run_sync(Base.metadata.drop_all)
