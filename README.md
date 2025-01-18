@@ -8,7 +8,6 @@ A modern, production-ready FastAPI application template with Docker support, fol
 - 🐳 Docker and Docker Compose configuration
 - 🗄️ PostgreSQL database with async support
 - 📝 SQLAlchemy ORM with async operations
-- 🔄 Redis for caching
 - 🔐 JWT Authentication
 - 📚 Auto-generated API documentation
 - ✨ CORS middleware configured
@@ -77,15 +76,27 @@ A modern, production-ready FastAPI application template with Docker support, fol
 docker-compose exec api pytest
 ```
 
-### Code Formatting
+### Code Quality
+
+You can run code quality checks in two ways:
+
+#### Using Docker (Recommended)
 ```bash
-docker-compose exec api black .
-docker-compose exec api isort .
+# Format code with Black and isort
+docker-compose run --rm format
+
+# Check code style with Flake8
+docker-compose run --rm lint
 ```
 
-### Linting
+#### Direct Command Line
 ```bash
-docker-compose exec api flake8
+# Format code
+black .
+isort .
+
+# Check code style
+flake8
 ```
 
 ## API Documentation
@@ -105,8 +116,7 @@ The API documentation is automatically generated and can be accessed at:
 
 ### Database
 - Async PostgreSQL with SQLAlchemy
-- Migrations handled by Alembic
-- Redis for caching and session management
+- Clean async database operations
 
 ### Authentication
 - JWT-based authentication

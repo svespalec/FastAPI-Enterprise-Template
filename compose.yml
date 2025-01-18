@@ -9,11 +9,9 @@ services:
       - .:/app
     environment:
       - DATABASE_URL=postgresql://postgres:postgres@db:5432/fastapi_db
-      - REDIS_URL=redis://redis:6379/0
       - PYTHONPATH=/app
     depends_on:
       - db
-      - redis
     command: uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload
 
   db:
@@ -27,10 +25,21 @@ services:
     ports:
       - "5432:5432"
 
-  redis:
-    image: redis:7-alpine
-    ports:
-      - "6379:6379"
+  format:
+    build: 
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - .:/app
+    command: sh -c "black . && isort ."
+
+  lint:
+    build: 
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - .:/app
+    command: flake8
 
 volumes:
   postgres_data: 
