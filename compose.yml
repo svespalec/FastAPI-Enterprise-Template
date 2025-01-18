@@ -26,6 +26,21 @@ services:
     ports:
       - "5432:5432"
 
+  test:
+    build: 
+      context: .
+      dockerfile: Dockerfile
+      target: final
+    volumes:
+      - .:/app
+    environment:
+      - DATABASE_URL=postgresql://postgres:postgres@db:5432/fastapi_db_test
+      - PYTHONPATH=/app
+    profiles: ["dev"]
+    depends_on:
+      - db
+    command: pytest -v
+
   format:
     build: 
       context: .
