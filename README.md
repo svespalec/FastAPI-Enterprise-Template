@@ -50,7 +50,7 @@ A modern, production-ready FastAPI application template with Docker support, fol
 
 1. Clone the repository:
    ```bash
-   git clone <repository-url>
+   git clone https://github.com/svespalec/FastAPI-Enterprise-Template.git
    ```
 
 2. Create a `.env` file in the root directory (optional, default values are provided):
