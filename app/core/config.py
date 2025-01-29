@@ -4,13 +4,13 @@ from pydantic_settings import BaseSettings
 
 
 class Settings(BaseSettings):
-    PROJECT_NAME: str = "FastAPI Advanced Template"
+    PROJECT_NAME: str = "FastAPI-Enterprise-Template"
     VERSION: str = "1.0.0"
-    DESCRIPTION: str = "Advanced FastAPI application with modern best practices"
+    DESCRIPTION: str = "Built for modern development teams who need a robust, scalable foundation for their next API project."
     API_V1_STR: str = "/api/v1"
 
     # Security
-    SECRET_KEY: str = "your-secret-key-here"  # Change in production
+    SECRET_KEY: str = "your-secret-key-here"  # Change in production!!
     ACCESS_TOKEN_EXPIRE_MINUTES: int = 30
 
     # Database
