@@ -1,6 +1,6 @@
 # Advanced FastAPI Application Template
 
-A modern, production-ready FastAPI application template with Docker support, following best practices for structure and clean code.
+A modern, production-ready FastAPI application template with Docker support, following best practices for structure and code.
 
 ## Features
 
@@ -138,42 +138,6 @@ This template includes a GitHub Actions workflow that automatically:
    - Verifies build succeeds
    - Uses GitHub Actions cache for faster builds
 
-## Deployment
-
-This template is ready for deployment, but deployment itself depends on your needs. Here are some considerations:
-
-### Production Requirements
-- HTTPS/TLS setup
-- Process management and auto-restart
-- Load balancing
-- Database backups
-- Monitoring and logging
-- Resource scaling
-
-### Deployment Options
-1. **Cloud Platforms**:
-   - AWS (ECS, EKS)
-   - Google Cloud (GKE)
-   - Azure (AKS)
-   - Digital Ocean
-   - Hetzner
-2. **Platform as a Service**:
-   - Heroku
-   - Google App Engine
-   - Azure App Service
-
-3. **Self-Hosted**:
-   - Docker Swarm
-   - Kubernetes
-   - Traditional VM deployment
-
-Choose your deployment platform based on:
-- Scale requirements
-- Budget constraints
-- Team expertise
-- Regulatory requirements
-- Geographic distribution needs
-
 ## API Documentation
 
 The API documentation is automatically generated and can be accessed at:
@@ -191,7 +155,7 @@ The API documentation is automatically generated and can be accessed at:
 
 ### Database
 - Async PostgreSQL with SQLAlchemy
-- Clean async database operations
+- Async database operations
 
 ### Authentication
 - JWT-based authentication
