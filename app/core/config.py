@@ -6,7 +6,7 @@ from pydantic_settings import BaseSettings
 class Settings(BaseSettings):
     PROJECT_NAME: str = "FastAPI-Enterprise-Template"
     VERSION: str = "1.0.0"
-    DESCRIPTION: str = "Built for modern development teams who need a robust, scalable foundation for their next API project."
+    DESCRIPTION: str = "FastAPI enterprise template for a scalable API"
     API_V1_STR: str = "/api/v1"
 
     # Security
